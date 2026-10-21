@@ -9,322 +9,322 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  /* Layout: single-column sales page, navy/amber brand (matches the delivered site template), warm paper neutral instead of pure white */
-  :root{
-    --bg:#F4F2EC;
-    --surface:#FFFFFF;
-    --ink:#182B3A;
-    --ink-soft:#4C5E6B;
-    --line:#E2DED2;
-    --navy:#18324A;
-    --navy-deep:#0E2033;
-    --teal:#1F7A8C;
-    --amber:#E0A23B;
-    --amber-ink:#2A1C04;
-    --good:#2E7D52;
-    --display:"Fraunces", Georgia, serif;
-    --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-    color-scheme: light;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#121A22;
-      --surface:#182431;
-      --ink:#EDEEE9;
-      --ink-soft:#A9B6BE;
-      --line:#2A3A47;
-      --navy:#1E3A54;
-      --navy-deep:#0B1620;
-      --teal:#3FA3B5;
-      --amber:#E8AE4F;
-      --amber-ink:#20140A;
-      --good:#4CAE7E;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#121A22;
-    --surface:#182431;
-    --ink:#EDEEE9;
-    --ink-soft:#A9B6BE;
-    --line:#2A3A47;
-    --navy:#1E3A54;
-    --navy-deep:#0B1620;
-    --teal:#3FA3B5;
-    --amber:#E8AE4F;
-    --amber-ink:#20140A;
-    --good:#4CAE7E;
-    color-scheme: dark;
-  }
+/* Layout: single-column sales page, navy/amber brand (matches the delivered site template), warm paper neutral instead of pure white */
+:root{
+--bg:#F4F2EC;
+--surface:#FFFFFF;
+--ink:#182B3A;
+--ink-soft:#4C5E6B;
+--line:#E2DED2;
+--navy:#18324A;
+--navy-deep:#0E2033;
+--teal:#1F7A8C;
+--amber:#E0A23B;
+--amber-ink:#2A1C04;
+--good:#2E7D52;
+--display:"Fraunces", Georgia, serif;
+--body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+--bg:#121A22;
+--surface:#182431;
+--ink:#EDEEE9;
+--ink-soft:#A9B6BE;
+--line:#2A3A47;
+--navy:#1E3A54;
+--navy-deep:#0B1620;
+--teal:#3FA3B5;
+--amber:#E8AE4F;
+--amber-ink:#20140A;
+--good:#4CAE7E;
+color-scheme: dark;
+}
+}
+:root[data-theme="dark"]{
+--bg:#121A22;
+--surface:#182431;
+--ink:#EDEEE9;
+--ink-soft:#A9B6BE;
+--line:#2A3A47;
+--navy:#1E3A54;
+--navy-deep:#0B1620;
+--teal:#3FA3B5;
+--amber:#E8AE4F;
+--amber-ink:#20140A;
+--good:#4CAE7E;
+color-scheme: dark;
+}
 
-  *{box-sizing:border-box;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:var(--body);
-    line-height:1.6;
-    padding-left:max(16px, env(safe-area-inset-left,0px));
-    padding-right:max(16px, env(safe-area-inset-right,0px));
-  }
-  img,video{max-width:100%;display:block;}
-  a{color:inherit;}
-  .wrap{max-width:860px;margin:0 auto;}
-  section{padding-block:56px;}
-  h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;color:var(--ink);}
-  h2{font-size:clamp(24px,4vw,32px);margin:0 0 14px;}
-  p{margin:0;}
-  .eyebrow{font-family:var(--body);color:var(--teal);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12.5px;margin-bottom:10px;}
-  .lead{color:var(--ink-soft);font-size:17px;max-width:620px;}
+*{box-sizing:border-box;}
+body{
+background:var(--bg);
+color:var(--ink);
+font-family:var(--body);
+line-height:1.6;
+padding-left:max(16px, env(safe-area-inset-left,0px));
+padding-right:max(16px, env(safe-area-inset-right,0px));
+}
+img,video{max-width:100%;display:block;}
+a{color:inherit;}
+.wrap{max-width:860px;margin:0 auto;}
+section{padding-block:56px;}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;color:var(--ink);}
+h2{font-size:clamp(24px,4vw,32px);margin:0 0 14px;}
+p{margin:0;}
+.eyebrow{font-family:var(--body);color:var(--teal);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12.5px;margin-bottom:10px;}
+.lead{color:var(--ink-soft);font-size:17px;max-width:620px;}
 
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    background:var(--amber);color:var(--amber-ink);
-    font-family:var(--body);font-weight:800;font-size:16px;
-    padding:15px 28px;border-radius:9px;
-    border:none;cursor:pointer;
-    transition:transform .15s ease, filter .15s ease;
-  }
-  .btn:hover{filter:brightness(1.06);transform:translateY(-1px);}
-  .btn:active{transform:translateY(0);}
-  .note{color:var(--ink-soft);font-size:13px;margin-top:12px;}
+.btn{
+display:inline-flex;align-items:center;gap:8px;
+background:var(--amber);color:var(--amber-ink);
+font-family:var(--body);font-weight:800;font-size:16px;
+padding:15px 28px;border-radius:9px;
+border:none;cursor:pointer;
+transition:transform .15s ease, filter .15s ease;
+}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px);}
+.btn:active{transform:translateY(0);}
+.note{color:var(--ink-soft);font-size:13px;margin-top:12px;}
 
-  /* Hero */
-  .hero{
-    background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
-    padding-block:72px 60px;
-  }
-  .hero .wrap{padding-left:0;padding-right:0;}
-  .hero .eyebrow{color:#8FD2DC;}
-  .hero h1{color:#FBF9F3;font-size:clamp(30px,5.4vw,46px);max-width:760px;margin:0 0 18px;}
-  .hero .lead{color:#C7D2D9;font-size:18px;max-width:640px;}
-  .price-row{display:flex;align-items:baseline;gap:12px;margin:30px 0 22px;flex-wrap:wrap;}
-  .price{font-family:var(--display);font-size:42px;font-weight:700;color:var(--amber);}
-  .price-unit{color:#9FADB6;font-size:14px;}
-  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
-  .badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px;font-size:13px;color:#DCE4E8;}
+/* Hero */
+.hero{
+background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);
+padding-block:72px 60px;
+}
+.hero .wrap{padding-left:0;padding-right:0;}
+.hero .eyebrow{color:#8FD2DC;}
+.hero h1{color:#FBF9F3;font-size:clamp(30px,5.4vw,46px);max-width:760px;margin:0 0 18px;}
+.hero .lead{color:#C7D2D9;font-size:18px;max-width:640px;}
+.price-row{display:flex;align-items:baseline;gap:12px;margin:30px 0 22px;flex-wrap:wrap;}
+.price{font-family:var(--display);font-size:42px;font-weight:700;color:var(--amber);}
+.price-unit{color:#9FADB6;font-size:14px;}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px;font-size:13px;color:#DCE4E8;}
 
-  /* Pain */
-  .pain .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;}
-  .quote-card{
-    background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
-    padding:24px 26px;border-radius:10px;font-size:16px;color:var(--ink);
-  }
-  .quote-card strong{color:var(--teal);}
+/* Pain */
+.pain .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;}
+.quote-card{
+background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);
+padding:24px 26px;border-radius:10px;font-size:16px;color:var(--ink);
+}
+.quote-card strong{color:var(--teal);}
 
-  /* Includes */
-  .includes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
-  .include-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:12px;
-    padding:24px;min-width:0;
-  }
-  .include-card .num{
-    font-family:var(--display);font-size:15px;font-weight:700;
-    width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;
-    display:flex;align-items:center;justify-content:center;margin-bottom:14px;
-  }
-  .include-card h3{font-size:17px;margin:0 0 8px;}
-  .include-card p{color:var(--ink-soft);font-size:14.5px;}
+/* Includes */
+.includes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+.include-card{
+background:var(--surface);border:1px solid var(--line);border-radius:12px;
+padding:24px;min-width:0;
+}
+.include-card .num{
+font-family:var(--display);font-size:15px;font-weight:700;
+width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;
+display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.include-card h3{font-size:17px;margin:0 0 8px;}
+.include-card p{color:var(--ink-soft);font-size:14.5px;}
 
-  /* Demo */
-  .demo{background:var(--navy);}
-  .demo .eyebrow{color:#8FD2DC;}
-  .demo h2{color:#FBF9F3;}
-  .demo .lead{color:#C7D2D9;}
-  .video-frame{
-    margin-top:26px;border-radius:14px;overflow:hidden;
-    box-shadow:0 24px 60px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12);
-    background:#000;
-  }
-  .video-frame video{width:100%;display:block;}
-  .video-placeholder{
-    padding:60px 28px;text-align:center;color:#FBF9F3;
-  }
-  .video-placeholder .play{
-    width:64px;height:64px;border-radius:50%;background:var(--amber);
-    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
-  }
-  .video-placeholder .play svg{width:22px;height:22px;fill:var(--amber-ink);margin-left:3px;}
-  .video-placeholder p{color:#C7D2D9;margin:6px 0 0;font-size:15px;}
-  .video-placeholder strong{display:block;font-size:18px;color:#FBF9F3;}
+/* Demo */
+.demo{background:var(--navy);}
+.demo .eyebrow{color:#8FD2DC;}
+.demo h2{color:#FBF9F3;}
+.demo .lead{color:#C7D2D9;}
+.video-frame{
+margin-top:26px;border-radius:14px;overflow:hidden;
+box-shadow:0 24px 60px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.12);
+background:#000;
+}
+.video-frame video{width:100%;display:block;}
+.video-placeholder{
+padding:60px 28px;text-align:center;color:#FBF9F3;
+}
+.video-placeholder .play{
+width:64px;height:64px;border-radius:50%;background:var(--amber);
+display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+}
+.video-placeholder .play svg{width:22px;height:22px;fill:var(--amber-ink);margin-left:3px;}
+.video-placeholder p{color:#C7D2D9;margin:6px 0 0;font-size:15px;}
+.video-placeholder strong{display:block;font-size:18px;color:#FBF9F3;}
 
-  /* Easy list */
-  .easy-list{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px;}
-  .easy-list li{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;min-width:0;}
-  .check{flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:var(--good);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;margin-top:2px;}
+/* Easy list */
+.easy-list{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px;}
+.easy-list li{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;min-width:0;}
+.check{flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:var(--good);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;margin-top:2px;}
 
-  /* For whom */
-  .forwhom{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
-  .chip{background:var(--bg);border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-weight:600;color:var(--navy);font-size:14px;}
-  :root[data-theme="dark"] .chip, @media (prefers-color-scheme:dark){ }
+/* For whom */
+.forwhom{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+.chip{background:var(--bg);border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-weight:600;color:var(--navy);font-size:14px;}
+:root[data-theme="dark"] .chip, @media (prefers-color-scheme:dark){ }
 
-  /* CTA band */
-  .cta{
-    background:linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
-    text-align:center;border-radius:18px;margin-block:8px;padding:52px 28px;
-  }
-  .cta h2{color:#FBF9F3;}
-  .cta .lead{color:#E3EDEF;margin:0 auto 26px;}
-  .cta-price{font-family:var(--display);font-size:48px;font-weight:700;color:var(--amber);margin-bottom:8px;}
+/* CTA band */
+.cta{
+background:linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+text-align:center;border-radius:18px;margin-block:8px;padding:52px 28px;
+}
+.cta h2{color:#FBF9F3;}
+.cta .lead{color:#E3EDEF;margin:0 auto 26px;}
+.cta-price{font-family:var(--display);font-size:48px;font-weight:700;color:var(--amber);margin-bottom:8px;}
 
-  /* FAQ */
-  .faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
-  .faq-item:last-child{border-bottom:none;}
-  .faq-item h3{font-family:var(--body);font-size:16px;font-weight:700;margin:0 0 6px;color:var(--ink);}
-  .faq-item p{color:var(--ink-soft);font-size:14.5px;}
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
+.faq-item:last-child{border-bottom:none;}
+.faq-item h3{font-family:var(--body);font-size:16px;font-weight:700;margin:0 0 6px;color:var(--ink);}
+.faq-item p{color:var(--ink-soft);font-size:14.5px;}
 
-  footer{padding-block:34px 48px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);}
+footer{padding-block:34px 48px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);}
+footer a{color:var(--teal);text-decoration:underline;}
 
-  @media (max-width:720px){
-    section{padding-block:40px;}
-    .pain .wrap{grid-template-columns:1fr;}
-    .includes{grid-template-columns:1fr;}
-  }
+@media (max-width:720px){
+section{padding-block:40px;}
+.pain .wrap{grid-template-columns:1fr;}
+.includes{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-
 <section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Handwerker-Website-Vorlage</div>
-    <h1>Eine eigene Website, ohne Programmierkenntnisse &mdash; in einer Stunde startklar</h1>
-    <p class="lead">Fertig gestaltete, mobilfreundliche Ein-Seiten-Website f&uuml;r Handwerker, Hausmeisterservices und kleine Betriebe. Mit Video-Anleitung und schriftlichem Schritt-f&uuml;r-Schritt-Guide.</p>
-    <div class="price-row">
-      <span class="price">24,99&nbsp;€</span>
-      <span class="price-unit">einmalig &middot; sofortiger Download</span>
-    </div>
-    <a class="btn" href="https://www.checkout-ds24.com/product/752171" target="_blank" rel="noopener">Jetzt sichern &amp; sofort herunterladen</a>
-    <p class="note" style="color:#9FADB6;">Sichere Zahlungsabwicklung &uuml;ber Digistore24</p>
-    <div class="badges">
-      <span class="badge">Video-Anleitung inklusive</span>
-      <span class="badge">Text-Guide inklusive</span>
-      <span class="badge">Mobilfreundlich</span>
-      <span class="badge">Sofort-Download</span>
-    </div>
-  </div>
+<div class="wrap">
+<div class="eyebrow">Handwerker-Website-Vorlage</div>
+<h1>Eine eigene Website, ohne Programmierkenntnisse &mdash; in einer Stunde startklar</h1>
+<p class="lead">Fertig gestaltete, mobilfreundliche Ein-Seiten-Website f&uuml;r Handwerker, Hausmeisterservices und kleine Betriebe. Mit Video-Anleitung und schriftlichem Schritt-f&uuml;r-Schritt-Guide.</p>
+<div class="price-row">
+<span class="price">24,99&nbsp;€</span>
+<span class="price-unit">einmalig &middot; sofortiger Download</span>
+</div>
+<a class="btn" href="https://www.checkout-ds24.com/product/752171" target="_blank" rel="noopener">Jetzt sichern &amp; sofort herunterladen</a>
+<p class="note" style="color:#9FADB6;">Sichere Zahlungsabwicklung &uuml;ber Digistore24</p>
+<div class="badges">
+<span class="badge">Video-Anleitung inklusive</span>
+<span class="badge">Text-Guide inklusive</span>
+<span class="badge">Mobilfreundlich</span>
+<span class="badge">Sofort-Download</span>
+</div>
+</div>
 </section>
 
 <section class="pain">
-  <div class="wrap">
-    <div>
-      <div class="eyebrow">Kommt Ihnen das bekannt vor?</div>
-      <h2>&bdquo;Haben Sie eine Webseite?&ldquo; &mdash; &bdquo;Nein, leider nicht.&ldquo;</h2>
-      <p class="lead">Die meisten Handwerker und Hausmeisterservices haben keine eigene Website &ndash; nicht weil sie keine wollen, sondern weil sie denken, man braucht daf&uuml;r einen Programmierer, viel Zeit oder ein teures Agentur-Budget.</p>
-    </div>
-    <div class="quote-card">
-      Genau dieses Problem l&ouml;st diese Vorlage: Sie bekommen eine fertige, professionelle Website zum Sofort-Einsatz &ndash; Sie tragen nur noch Firmenname, Leistungen und Kontaktdaten ein. <strong>Fertig.</strong>
-    </div>
-  </div>
+<div class="wrap">
+<div>
+<div class="eyebrow">Kommt Ihnen das bekannt vor?</div>
+<h2>&bdquo;Haben Sie eine Webseite?&ldquo; &mdash; &bdquo;Nein, leider nicht.&ldquo;</h2>
+<p class="lead">Die meisten Handwerker und Hausmeisterservices haben keine eigene Website &ndash; nicht weil sie keine wollen, sondern weil sie denken, man braucht daf&uuml;r einen Programmierer, viel Zeit oder ein teures Agentur-Budget.</p>
+</div>
+<div class="quote-card">
+Genau dieses Problem l&ouml;st diese Vorlage: Sie bekommen eine fertige, professionelle Website zum Sofort-Einsatz &ndash; Sie tragen nur noch Firmenname, Leistungen und Kontaktdaten ein. <strong>Fertig.</strong>
+</div>
+</div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="eyebrow">Was Sie bekommen</div>
-    <h2>Alles, was Sie f&uuml;r den Start brauchen</h2>
-    <div class="includes">
-      <div class="include-card">
-        <div class="num">1</div>
-        <h3>Die fertige Website</h3>
-        <p>Eine einzelne HTML-Datei, professionell gestaltet und direkt einsatzbereit. &Ouml;ffnen, eigene Texte eintragen, fertig.</p>
-      </div>
-      <div class="include-card">
-        <div class="num">2</div>
-        <h3>Video-Anleitung (ca. 1&nbsp;Min.)</h3>
-        <p>Schritt f&uuml;r Schritt sehen Sie genau, wo Sie klicken und was Sie &auml;ndern m&uuml;ssen &ndash; auch ohne Vorerfahrung.</p>
-      </div>
-      <div class="include-card">
-        <div class="num">3</div>
-        <h3>Schriftliche Anleitung</h3>
-        <p>Jeder Schritt zus&auml;tzlich Wort f&uuml;r Wort zum Nachlesen &ndash; falls Sie lieber lesen oder sp&auml;ter etwas nachschlagen wollen.</p>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="eyebrow">Was Sie bekommen</div>
+<h2>Alles, was Sie f&uuml;r den Start brauchen</h2>
+<div class="includes">
+<div class="include-card">
+<div class="num">1</div>
+<h3>Die fertige Website</h3>
+<p>Eine einzelne HTML-Datei, professionell gestaltet und direkt einsatzbereit. &Ouml;ffnen, eigene Texte eintragen, fertig.</p>
+</div>
+<div class="include-card">
+<div class="num">2</div>
+<h3>Video-Anleitung (ca. 1&nbsp;Min.)</h3>
+<p>Schritt f&uuml;r Schritt sehen Sie genau, wo Sie klicken und was Sie &auml;ndern m&uuml;ssen &ndash; auch ohne Vorerfahrung.</p>
+</div>
+<div class="include-card">
+<div class="num">3</div>
+<h3>Schriftliche Anleitung</h3>
+<p>Jeder Schritt zus&auml;tzlich Wort f&uuml;r Wort zum Nachlesen &ndash; falls Sie lieber lesen oder sp&auml;ter etwas nachschlagen wollen.</p>
+</div>
+</div>
+</div>
 </section>
 
 <section class="demo">
-  <div class="wrap">
-    <div class="eyebrow">So einfach geht&rsquo;s</div>
-    <h2>Die Anleitung in Aktion</h2>
-    <p class="lead">So bearbeiten Sie die Vorlage mit einem einfachen Texteditor &ndash; live gezeigt im Video.</p>
-    <div class="video-frame">
-      <div class="video-placeholder">
-        <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <strong>Video-Anleitung &ndash; im Lieferumfang enthalten</strong>
-        <p>Das vollst&auml;ndige Schritt-f&uuml;r-Schritt-Video (ca. 1&nbsp;Minute) erhalten Sie direkt nach dem Kauf zusammen mit der Vorlage und dem Text-Guide.</p>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="eyebrow">So einfach geht&rsquo;s</div>
+<h2>Die Anleitung in Aktion</h2>
+<p class="lead">So bearbeiten Sie die Vorlage mit einem einfachen Texteditor &ndash; live gezeigt im Video.</p>
+<div class="video-frame">
+<div class="video-placeholder">
+<div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+<strong>Video-Anleitung &ndash; im Lieferumfang enthalten</strong>
+<p>Das vollst&auml;ndige Schritt-f&uuml;r-Schritt-Video (ca. 1&nbsp;Minute) erhalten Sie direkt nach dem Kauf zusammen mit der Vorlage und dem Text-Guide.</p>
+</div>
+</div>
+</div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="eyebrow">Warum es so einfach ist</div>
-    <h2>Keine Programmierkenntnisse n&ouml;tig</h2>
-    <ul class="easy-list">
-      <li><span class="check">&#10003;</span> Alle Stellen zum Anpassen sind klar markiert (Suche nach &bdquo;&Auml;NDERN&ldquo;)</li>
-      <li><span class="check">&#10003;</span> Farben &auml;ndern Sie an einer einzigen zentralen Stelle &ndash; der Rest passt sich automatisch an</li>
-      <li><span class="check">&#10003;</span> Kein Website-Baukasten, kein Abo, keine laufenden Kosten</li>
-      <li><span class="check">&#10003;</span> Funktioniert auf PC, Tablet und Handy</li>
-      <li><span class="check">&#10003;</span> Ver&ouml;ffentlichen bei fast jedem Hoster oder kostenlos (z.&nbsp;B. Netlify, GitHub Pages)</li>
-    </ul>
-  </div>
+<div class="wrap">
+<div class="eyebrow">Warum es so einfach ist</div>
+<h2>Keine Programmierkenntnisse n&ouml;tig</h2>
+<ul class="easy-list">
+<li><span class="check">&#10003;</span> Alle Stellen zum Anpassen sind klar markiert (Suche nach &bdquo;&Auml;NDERN&ldquo;)</li>
+<li><span class="check">&#10003;</span> Farben &auml;ndern Sie an einer einzigen zentralen Stelle &ndash; der Rest passt sich automatisch an</li>
+<li><span class="check">&#10003;</span> Kein Website-Baukasten, kein Abo, keine laufenden Kosten</li>
+<li><span class="check">&#10003;</span> Funktioniert auf PC, Tablet und Handy</li>
+<li><span class="check">&#10003;</span> Ver&ouml;ffentlichen bei fast jedem Hoster oder kostenlos (z.&nbsp;B. Netlify, GitHub Pages)</li>
+</ul>
+</div>
 </section>
 
 <section class="forwhom">
-  <div class="wrap">
-    <div class="eyebrow">F&uuml;r wen geeignet</div>
-    <h2>F&uuml;r jeden kleinen Betrieb, der online gefunden werden will</h2>
-    <div class="chips">
-      <span class="chip">Handwerker</span>
-      <span class="chip">Hausmeisterservices</span>
-      <span class="chip">Reinigungsfirmen</span>
-      <span class="chip">Elektriker</span>
-      <span class="chip">Maler &amp; Lackierer</span>
-      <span class="chip">Gartenbau</span>
-      <span class="chip">kleine Betriebe aller Art</span>
-    </div>
-  </div>
+<div class="wrap">
+<div class="eyebrow">F&uuml;r wen geeignet</div>
+<h2>F&uuml;r jeden kleinen Betrieb, der online gefunden werden will</h2>
+<div class="chips">
+<span class="chip">Handwerker</span>
+<span class="chip">Hausmeisterservices</span>
+<span class="chip">Reinigungsfirmen</span>
+<span class="chip">Elektriker</span>
+<span class="chip">Maler &amp; Lackierer</span>
+<span class="chip">Gartenbau</span>
+<span class="chip">kleine Betriebe aller Art</span>
+</div>
+</div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="cta">
-      <h2>Starten Sie noch heute</h2>
-      <p class="lead" style="max-width:480px;margin-left:auto;margin-right:auto;">Sofortiger Download nach dem Kauf &ndash; Ihre Website kann heute noch online gehen.</p>
-      <div class="cta-price">24,99&nbsp;€</div>
-      <a class="btn" href="https://www.checkout-ds24.com/product/752171" target="_blank" rel="noopener">Jetzt sichern &amp; sofort herunterladen</a>
-    </div>
-  </div>
+<div class="wrap">
+<div class="cta">
+<h2>Starten Sie noch heute</h2>
+<p class="lead" style="max-width:480px;margin-left:auto;margin-right:auto;">Sofortiger Download nach dem Kauf &ndash; Ihre Website kann heute noch online gehen.</p>
+<div class="cta-price">24,99&nbsp;€</div>
+<a class="btn" href="https://www.checkout-ds24.com/product/752171" target="_blank" rel="noopener">Jetzt sichern &amp; sofort herunterladen</a>
+</div>
+</div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="eyebrow">H&auml;ufige Fragen</div>
-    <h2>Noch Fragen?</h2>
-    <div class="faq-item">
-      <h3>Brauche ich Programmierkenntnisse?</h3>
-      <p>Nein. Sie bearbeiten die Datei mit einem einfachen Texteditor und ersetzen markierte Textstellen durch Ihre eigenen Angaben.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Funktioniert die Website auf dem Handy?</h3>
-      <p>Ja, die Vorlage ist von Grund auf mobilfreundlich gestaltet und passt sich automatisch an PC, Tablet und Smartphone an.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Wie ver&ouml;ffentliche ich die fertige Seite?</h3>
-      <p>Die HTML-Datei k&ouml;nnen Sie bei nahezu jedem Webhoster hochladen oder kostenlos &uuml;ber Anbieter wie Netlify oder GitHub Pages ver&ouml;ffentlichen &ndash; im Video wird ein m&ouml;glicher Weg gezeigt.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Brauche ich ein Impressum / eine Datenschutzerkl&auml;rung?</h3>
-      <p>F&uuml;r eine &ouml;ffentlich erreichbare Website sind in Deutschland in der Regel ein Impressum (&sect;5 TMG) und eine Datenschutzerkl&auml;rung (DSGVO) Pflicht. Diese Vorlage ist eine gestalterische Hilfe und ersetzt keine rechtliche Beratung &ndash; bitte erg&auml;nzen Sie diese Angaben selbst bzw. lassen Sie sie von einem Anwalt oder Generator erstellen.</p>
-    </div>
-  </div>
+<div class="wrap">
+<div class="eyebrow">H&auml;ufige Fragen</div>
+<h2>Noch Fragen?</h2>
+<div class="faq-item">
+<h3>Brauche ich Programmierkenntnisse?</h3>
+<p>Nein. Sie bearbeiten die Datei mit einem einfachen Texteditor und ersetzen markierte Textstellen durch Ihre eigenen Angaben.</p>
+</div>
+<div class="faq-item">
+<h3>Funktioniert die Website auf dem Handy?</h3>
+<p>Ja, die Vorlage ist von Grund auf mobilfreundlich gestaltet und passt sich automatisch an PC, Tablet und Smartphone an.</p>
+</div>
+<div class="faq-item">
+<h3>Wie ver&ouml;ffentliche ich die fertige Seite?</h3>
+<p>Die HTML-Datei k&ouml;nnen Sie bei nahezu jedem Webhoster hochladen oder kostenlos &uuml;ber Anbieter wie Netlify oder GitHub Pages ver&ouml;ffentlichen &ndash; im Video wird ein m&ouml;glicher Weg gezeigt.</p>
+</div>
+<div class="faq-item">
+<h3>Brauche ich ein Impressum / eine Datenschutzerkl&auml;rung?</h3>
+<p>F&uuml;r eine &ouml;ffentlich erreichbare Website sind in Deutschland in der Regel ein Impressum (&sect;5 TMG) und eine Datenschutzerkl&auml;rung (DSGVO) Pflicht. Diese Vorlage ist eine gestalterische Hilfe und ersetzt keine rechtliche Beratung &ndash; bitte erg&auml;nzen Sie diese Angaben selbst bzw. lassen Sie sie von einem Anwalt oder Generator erstellen.</p>
+</div>
+</div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <p>&copy; 2026 Nordwest Hausmeisterservice. Digitales Produkt &ndash; Auslieferung als Sofort-Download nach Kaufabschluss &uuml;ber Digistore24.</p>
-  </div>
+<div class="wrap">
+<p>&copy; 2026 Nordwest Hausmeisterservice. Digitales Produkt &ndash; Auslieferung als Sofort-Download nach Kaufabschluss &uuml;ber Digistore24. &middot; <a href="impressum.html">Impressum</a></p>
+</div>
 </footer>
 
 </body>
