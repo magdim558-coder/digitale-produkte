@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Messprotokoll-Vorlage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: single-column sales page for an e-check protocol spreadsheet; navy/amber brand, a mono face for the data-table preview */
+  :root{
+    --bg:#F4F2EC;
+    --surface:#FFFFFF;
+    --ink:#182B3A;
+    --ink-soft:#4C5E6B;
+    --line:#E2DED2;
+    --navy:#18324A;
+    --navy-deep:#0E2033;
+    --teal:#1F7A8C;
+    --amber:#E0A23B;
+    --amber-ink:#2A1C04;
+    --good:#2E7D52;
+    --good-bg:#E4F3EA;
+    --warn:#B3471F;
+    --warn-bg:#F7E4DA;
+    --display:"Fraunces", Georgia, serif;
+    --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#121A22;
+      --surface:#182431;
+      --ink:#EDEEE9;
+      --ink-soft:#A9B6BE;
+      --line:#2A3A47;
+      --navy:#1E3A54;
+      --navy-deep:#0B1620;
+      --teal:#3FA3B5;
+      --amber:#E8AE4F;
+      --amber-ink:#20140A;
+      --good:#4CAE7E;
+      --good-bg:#17301F;
+      --warn:#E08A61;
+      --warn-bg:#352015;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#121A22;
+    --surface:#182431;
+    --ink:#EDEEE9;
+    --ink-soft:#A9B6BE;
+    --line:#2A3A47;
+    --navy:#1E3A54;
+    --navy-deep:#0B1620;
+    --teal:#3FA3B5;
+    --amber:#E8AE4F;
+    --amber-ink:#20140A;
+    --good:#4CAE7E;
+    --good-bg:#17301F;
+    --warn:#E08A61;
+    --warn-bg:#352015;
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.6;
+    padding-left:max(16px, env(safe-area-inset-left,0px));
+    padding-right:max(16px, env(safe-area-inset-right,0px));
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:860px;margin:0 auto;}
+  section{padding-block:56px;}
+  h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;color:var(--ink);}
+  h2{font-size:clamp(24px,4vw,32px);margin:0 0 14px;}
+  p{margin:0;}
+  .eyebrow{font-family:var(--body);color:var(--teal);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12.5px;margin-bottom:10px;}
+  .lead{color:var(--ink-soft);font-size:17px;max-width:620px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--amber);color:var(--amber-ink);
+    font-family:var(--body);font-weight:800;font-size:16px;
+    padding:15px 28px;border-radius:9px;
+    border:none;cursor:pointer;
+    transition:transform .15s ease, filter .15s ease;
+  }
+  .btn:hover{filter:brightness(1.06);transform:translateY(-1px);}
+  .btn:active{transform:translateY(0);}
+  .note{color:var(--ink-soft);font-size:13px;margin-top:12px;}
+
+  /* Hero */
+  .hero{background:linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 100%);padding-block:72px 60px;}
+  .hero .wrap{padding-left:0;padding-right:0;}
+  .hero .eyebrow{color:#8FD2DC;}
+  .hero h1{color:#FBF9F3;font-size:clamp(28px,5vw,42px);max-width:760px;margin:0 0 18px;}
+  .hero .lead{color:#C7D2D9;font-size:18px;max-width:640px;}
+  .norm-tag{
+    display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;
+    color:#DCE4E8;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);
+    padding:7px 13px;border-radius:7px;margin-bottom:20px;
+  }
+  .price-row{display:flex;align-items:baseline;gap:12px;margin:26px 0 22px;flex-wrap:wrap;}
+  .price{font-family:var(--display);font-size:42px;font-weight:700;color:var(--amber);}
+  .price-unit{color:#9FADB6;font-size:14px;}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px;}
+  .badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);padding:8px 14px;border-radius:999px;font-size:13px;color:#DCE4E8;}
+
+  /* Pain */
+  .pain .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;}
+  .quote-card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--amber);padding:24px 26px;border-radius:10px;font-size:16px;color:var(--ink);}
+  .quote-card strong{color:var(--teal);}
+
+  /* Table preview */
+  .table-preview{
+    margin-top:28px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--surface);
+  }
+  .table-scroll{overflow-x:auto;}
+  table.proto{border-collapse:collapse;width:100%;min-width:640px;font-family:var(--mono);font-size:12.5px;}
+  table.proto th, table.proto td{padding:8px 10px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);white-space:nowrap;}
+  table.proto th{background:var(--navy);color:#EAF1F4;font-weight:600;text-align:left;font-family:var(--body);font-size:11.5px;text-transform:uppercase;letter-spacing:.03em;}
+  table.proto .grp{background:var(--navy-deep);color:#AFC3CC;text-align:center;font-family:var(--body);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;}
+  table.proto td.ok{color:var(--good);background:var(--good-bg);font-weight:600;}
+  table.proto td.bad{color:var(--warn);background:var(--warn-bg);font-weight:600;}
+  table.proto tbody tr:last-child td{border-bottom:none;}
+  .preview-caption{padding:12px 16px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);}
+
+  /* Includes */
+  .includes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:28px;}
+  .include-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;min-width:0;}
+  .include-card h3{font-size:16.5px;margin:0 0 8px;font-family:var(--body);font-weight:700;}
+  .include-card p{color:var(--ink-soft);font-size:14.5px;}
+
+  /* Easy list */
+  .easy-list{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:16px;}
+  .easy-list li{display:flex;gap:14px;align-items:flex-start;font-size:15.5px;min-width:0;}
+  .check{flex:0 0 24px;width:24px;height:24px;border-radius:50%;background:var(--good);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;margin-top:2px;}
+
+  /* Sources */
+  .sources{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .source-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;}
+  .source-list li{font-family:var(--mono);font-size:13px;color:var(--ink-soft);padding-left:18px;position:relative;}
+  .source-list li::before{content:"—";position:absolute;left:0;color:var(--teal);}
+
+  /* For whom */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .chip{background:var(--bg);border:1px solid var(--line);padding:9px 16px;border-radius:999px;font-weight:600;color:var(--navy);font-size:14px;}
+
+  /* CTA band */
+  .cta{background:linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);text-align:center;border-radius:18px;margin-block:8px;padding:52px 28px;}
+  .cta h2{color:#FBF9F3;}
+  .cta .lead{color:#E3EDEF;margin:0 auto 26px;}
+  .cta-price{font-family:var(--display);font-size:48px;font-weight:700;color:var(--amber);margin-bottom:8px;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);padding:18px 0;}
+  .faq-item:last-child{border-bottom:none;}
+  .faq-item h3{font-family:var(--body);font-size:16px;font-weight:700;margin:0 0 6px;color:var(--ink);}
+  .faq-item p{color:var(--ink-soft);font-size:14.5px;}
+
+  footer{padding-block:34px 48px;color:var(--ink-soft);font-size:12.5px;border-top:1px solid var(--line);}
+
+  @media (max-width:720px){
+    section{padding-block:40px;}
+    .pain .wrap{grid-template-columns:1fr;}
+    .includes{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Messprotokoll-Vorlage</div>
+    <div class="norm-tag">DIN&nbsp;VDE&nbsp;0100-600:2017-06</div>
+    <h1>Mess- und Pr&uuml;fprotokoll als fertige Excel-Vorlage &ndash; eine Tabelle, alle Werte, automatische Grenzwertpr&uuml;fung</h1>
+    <p class="lead">So, wie E-Check-Protokolle in der Praxis tats&auml;chlich gef&uuml;hrt werden: Stromkreise als Zeilen, Messarten als Spalten &ndash; mit hinterlegten Grenzwerttabellen und automatischer Ampel-Bewertung (i.&nbsp;O. / n.&nbsp;i.&nbsp;O.).</p>
+    <div class="price-row">
+      <span class="price">19,99&nbsp;€</span>
+      <span class="price-unit">einmalig &middot; sofortiger Download</span>
+    </div>
+    <a class="btn" href="https://www.checkout-ds24.com/product/752182" target="_blank" rel="noopener">Jetzt sichern &amp; sofort herunterladen</a>
+    <p class="note" style="color:#9FADB6;">Sichere Zahlungsabwicklung &uuml;ber Digistore24</p>
+    <div class="badges">
+      <span class="badge">Excel (.xlsx), keine Makros</span>
+      <span class="badge">Automatische Grenzwertpr&uuml;fung</span>
+      <span class="badge">Quellen angegeben</span>
+    </div>
+  </div>
+</section>
+
+<section class="pain">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Das &uuml;bliche Problem</div>
+      <h2>Drei getrennte Tabellen, die niemand so f&uuml;hrt</h2>
+      <p class="lead">Viele frei verf&uuml;gbare Vorlagen trennen Isolationswiderstand, Schleifenimpedanz und RCD-Pr&uuml;fung in eigene Tabellen. In der Praxis arbeitet kaum jemand so &ndash; die Messarten stehen als Spalten nebeneinander, die Stromkreise als Zeilen darunter, in einer einzigen Tabelle.</p>
+    </div>
+    <div class="quote-card">
+      Diese Vorlage ist genau so aufgebaut: <strong>eine Matrix-Tabelle</strong>, Stromkreis f&uuml;r Stromkreis, mit allen Messarten in gruppierten Spalten &ndash; dazu hinterlegte Grenzwerttabellen, die den passenden Grenzwert automatisch nachschlagen.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Struktur der Vorlage</div>
+    <h2>So sieht das Messraster aus</h2>
+    <p class="lead">Ausschnitt aus der Tabelle &ndash; Spaltengruppen f&uuml;r Isolationswiderstand, Schleifenimpedanz und RCD-Pr&uuml;fung, Ampel-Status automatisch berechnet.</p>
+    <div class="table-preview">
+      <div class="table-scroll">
+        <table class="proto">
+          <thead>
+            <tr>
+              <th rowspan="2">Stromkreis</th>
+              <th rowspan="2">Schutzorgan</th>
+              <th colspan="2" class="grp">Isolationswiderstand</th>
+              <th colspan="2" class="grp">Schleifenimpedanz</th>
+              <th colspan="2" class="grp">RCD-Pr&uuml;fung</th>
+            </tr>
+            <tr>
+              <th>Grenzwert</th><th>Status</th>
+              <th>Gemessen</th><th>Status</th>
+              <th>Ausl&ouml;sezeit</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kueche Steckdosen</td><td>B16</td>
+              <td>&ge;1,0&nbsp;M&Omega;</td><td class="ok">i.&nbsp;O.</td>
+              <td>&le;2,87&nbsp;&Omega;</td><td class="ok">i.&nbsp;O.</td>
+              <td>&le;300&nbsp;ms</td><td class="ok">i.&nbsp;O.</td>
+            </tr>
+            <tr>
+              <td>Bad Beleuchtung</td><td>B10</td>
+              <td>&ge;1,0&nbsp;M&Omega;</td><td class="bad">n.&nbsp;i.&nbsp;O.</td>
+              <td>&le;4,60&nbsp;&Omega;</td><td class="ok">i.&nbsp;O.</td>
+              <td>&le;300&nbsp;ms</td><td class="ok">i.&nbsp;O.</td>
+            </tr>
+            <tr>
+              <td>Werkstatt Kraft</td><td>C16</td>
+              <td>&ge;1,0&nbsp;M&Omega;</td><td class="ok">i.&nbsp;O.</td>
+              <td>&le;1,44&nbsp;&Omega;</td><td class="ok">i.&nbsp;O.</td>
+              <td>&le;150&nbsp;ms</td><td class="ok">i.&nbsp;O.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="preview-caption">Beispielwerte zur Veranschaulichung &ndash; in der Vorlage f&uuml;r beliebig viele Stromkreise erweiterbar.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Was enthalten ist</div>
+    <h2>Vollst&auml;ndig f&uuml;r die Dokumentation einer E-Check-Pr&uuml;fung</h2>
+    <div class="includes">
+      <div class="include-card">
+        <h3>Kopfdaten &amp; Pr&uuml;fangaben</h3>
+        <p>Anlage/Objekt, Netzsystem, Pr&uuml;fdatum, Pr&uuml;fer, angewandte Norm, Messger&auml;t mit Kalibrierdatum.</p>
+      </div>
+      <div class="include-card">
+        <h3>Messraster (Hauptteil)</h3>
+        <p>Eine Zeile je Stromkreis, Spaltengruppen f&uuml;r Isolationswiderstand, Schleifenimpedanz und RCD-Pr&uuml;fung mit automatischer Grenzwert-Ermittlung.</p>
+      </div>
+      <div class="include-card">
+        <h3>M&auml;ngel &amp; Ma&szlig;nahmen</h3>
+        <p>Eigene Tabelle f&uuml;r festgestellte M&auml;ngel, empfohlene Ma&szlig;nahme und Erledigt-Status.</p>
+      </div>
+      <div class="include-card">
+        <h3>Gesamtergebnis &amp; Unterschrift</h3>
+        <p>Pr&uuml;fergebnis (bestanden / mit M&auml;ngeln / nicht bestanden), n&auml;chster Pr&uuml;ftermin, Ort/Datum, Unterschriftenzeile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Automatisierung</div>
+    <h2>Grenzwerte werden nicht abgetippt &ndash; sie werden nachgeschlagen</h2>
+    <ul class="easy-list">
+      <li><span class="check">&#10003;</span> Grenzwert f&uuml;r Isolationswiderstand abh&auml;ngig vom Spannungsbereich (SELV/PELV, bis 500&nbsp;V AC) automatisch ermittelt</li>
+      <li><span class="check">&#10003;</span> Grenzwert f&uuml;r Schleifenimpedanz abh&auml;ngig vom Schutzorgan (z.&nbsp;B. B16, C16) automatisch berechnet</li>
+      <li><span class="check">&#10003;</span> Grenzwert f&uuml;r RCD-Ausl&ouml;sezeit abh&auml;ngig von Typ und Pr&uuml;fart (1&times; / 5&times; I&Delta;N) automatisch nachgeschlagen</li>
+      <li><span class="check">&#10003;</span> Status-Ampel (i.&nbsp;O. / n.&nbsp;i.&nbsp;O.) f&uuml;r jeden Messwert, farblich hervorgehoben</li>
+      <li><span class="check">&#10003;</span> Kein Excel-Profiwissen n&ouml;tig &ndash; nur Messwerte eintragen, Rest rechnet die Vorlage</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sources">
+  <div class="wrap">
+    <div class="eyebrow">Quellen</div>
+    <h2>Grenzwerte mit Quellenangabe hinterlegt</h2>
+    <p class="lead">Jede Grenzwerttabelle in der Vorlage nennt ihre Quelle direkt in der Tabelle.</p>
+    <ul class="source-list">
+      <li>DIN VDE 0100-600:2017-06 &ndash; Errichten von Niederspannungsanlagen, Pr&uuml;fungen</li>
+      <li>DIN EN 60898 &ndash; Leitungsschutzschalter, Ausl&ouml;secharakteristik B/C</li>
+      <li>DIN EN 61008-1 / 61009-1 &ndash; Fehlerstrom-Schutzeinrichtungen (RCD)</li>
+      <li>DGUV Information 203-072</li>
+      <li>VDE 0664-10</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">F&uuml;r wen geeignet</div>
+    <h2>F&uuml;r Elektrofachkr&auml;fte und E-Check-Pr&uuml;fer</h2>
+    <div class="chips">
+      <span class="chip">Elektriker</span>
+      <span class="chip">Elektrofachkr&auml;fte</span>
+      <span class="chip">E-Check-Pr&uuml;fer</span>
+      <span class="chip">Elektro-Kleinbetriebe</span>
+      <span class="chip">Selbstst&auml;ndige im Elektrohandwerk</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>Protokoll heute noch einsatzbereit</h2>
+      <p class="lead" style="max-width:480px;margin-left:auto;margin-right:auto;">Sofortiger Download nach dem Kauf &ndash; direkt f&uuml;r die n&auml;chste Pr&uuml;fung nutzbar.</p>
+      <div class="cta-price">19,99&nbsp;€</div>
+      <a class="btn" href="https://www.checkout-ds24.com/product/752182" target="_blank" rel="noopener">Jetzt sichern &amp; sofort herunterladen</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">H&auml;ufige Fragen</div>
+    <h2>Noch Fragen?</h2>
+    <div class="faq-item">
+      <h3>Brauche ich Makros oder Add-ins?</h3>
+      <p>Nein. Die Vorlage arbeitet ausschlie&szlig;lich mit Standard-Excel-Formeln und &ouml;ffnet sich in jeder aktuellen Excel-Version sowie in LibreOffice Calc.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Wie viele Stromkreise passen in die Vorlage?</h3>
+      <p>Die Vorlage ist mit Beispielzeilen vorbereitet und l&auml;sst sich beliebig um weitere Zeilen erg&auml;nzen &ndash; die Formeln &uuml;bernehmen Sie einfach in die neue Zeile.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Ersetzt diese Vorlage eine rechtliche oder fachliche Pr&uuml;fung?</h3>
+      <p>Nein. Die Vorlage ist eine Arbeits- und Dokumentationshilfe auf Basis ver&ouml;ffentlichter Normwerte. Die fachliche Verantwortung f&uuml;r Pr&uuml;fung und Bewertung liegt weiterhin bei der pr&uuml;fenden Elektrofachkraft.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Nordwest Hausmeisterservice. Digitales Produkt &ndash; Auslieferung als Sofort-Download nach Kaufabschluss &uuml;ber Digistore24.</p>
+  </div>
+</footer>
+
+</body>
+</html>
